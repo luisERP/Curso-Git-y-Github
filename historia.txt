@@ -1,0 +1,26 @@
+    1  alias avenv=.\venv\scripts\activate
+    2  pip install flask
+    3  pip install python-dotenv
+    4  pip freeze
+    5  pip freeze > requirements.txt
+    6  flask.exe run
+    7  pip download --index-url=http://127.0.0.1:5000/ click
+    8  git init
+    9  git comit -m 'Comandos basicos'
+   10  git add .
+   11  git commit -m 'Comandos basicos'
+   12  git commit -m "Comandos basicos"
+   13  /D
+   14  cd /D
+   15  cd \D
+   16  cd \D\
+   17  cd \c
+   18  cd /c
+   19  cd D
+   20  cd ~
+   21  ls
+   22  avenv
+   23  ls --help
+   24  cat "Comandos Git.md" 
+   25  git log "Comandos Git.md" 
+   26  git status 
