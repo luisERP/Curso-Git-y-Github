@@ -26,6 +26,7 @@ Iniciar un nuevo repositorio, agregar los archivos y generar una entrada en la B
 
 1. ```git status```
 2. ```git log  Comandos Git.md```
+    * ```git log --all --graph --decorate --oneline```
 3. ```git show Comandos Git.md```
 4. ```git diff f037bd8d1e3a9ec662ff19dd28b79e6ec616d74c 3a12197528d37295480c77038b84aeabc29106e4```
 
@@ -33,6 +34,7 @@ Iniciar un nuevo repositorio, agregar los archivos y generar una entrada en la B
 
 1. Muestra el estado actual del repositorio.
 2. Muestra el registro de todos los commits aplicados sobre el archivo.
+    * Muestra el historial completo de nuestro proyecto de forma comprimida y mas atractica visualmente.
 3. Muestra el ultimo cambio que se hizo.
 4. Compara dos commits y muestra los cambios, el **orden** de los commits es importante
 
@@ -87,11 +89,11 @@ Lo primero es crear el repositorio en la plataforma que se desee, en este ejempl
 
 ### Procedimiento:
 
-[<img src="./assets/new_repo.jpg" width="800"/>](/assets/new_repo.jpg "Nuevo repositorio en github")
+[<img src="./assets/new_repo.jpg" width="800"/>](./assets/new_repo.jpg "Nuevo repositorio en github")
 
 Para configurar el repositorio local se debe copiar la dirreccion https ( inicialmente, luego veremos mediante ssh ) del repositorio, git da la dirreccion justo despues de crear el repositorio. En la siguiente imagen se ve la direccion, es solo darle copiar mediante el boton del final.
 
-[<img src="./assets/empty_repo.jpg" width="800"/>](/assets/empty_repo.jpg "Repositorio vacio")
+[<img src="./assets/empty_repo.jpg" width="800"/>](./assets/empty_repo.jpg "Repositorio vacio")
 
 ### Comandos:
 
@@ -137,7 +139,7 @@ Estos son los comandos que recomienda git al crear un repositorio. Basicamente a
     * En el titulo de la clave poner un identificador del dispositivo en donde esta siendo usada esa llave.
     * En el campo de la llave copiar el contenido de la llave **publica**, hibucada en *C:\Users\Luis/.ssh/id_rsa.pub*
 
-[<img src="./assets/new_ssh_key.jpg" width="800"/>](/assets/new_ssh_key.jpg "Añadir clave a github")
+[<img src="./assets/new_ssh_key.jpg" width="800"/>](./assets/new_ssh_key.jpg "Añadir clave a github")
 
 
 ## Usandp la clave SSH en nuestro repositorio.
@@ -153,3 +155,19 @@ Estos son los comandos que recomienda git al crear un repositorio. Basicamente a
 1. Muestra los origenes remotos
 2. Cambia la ruta remota del origen *origin* y la establece a la ruta por ssh.
     * En caso de que no exista ningun origen remoto se crea con la ruta de ssh.
+
+## Tags:
+Son referencias a versiones del proyecto, no tienen utilidad dentro del proyecto, solo sirven para que las demas personas conozcan las distintas versiones.
+
+### Comandos:
+
+1. ```git tag```
+2. ```git tag -a v0.1 -m "Mensage del tag" ea9f9bd```
+3. ```git show-ref --tags``
+4. ```git push origin --tags```
+
+### Descripción:
+1. Muestra los **tags** denntro del proyecto.
+2. Crea un **tag** 
+3. Muestra los hashes a los que hacen referencia los tags.
+4. Envia los tags solamente.
