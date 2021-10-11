@@ -27,6 +27,7 @@ Iniciar un nuevo repositorio, agregar los archivos y generar una entrada en la B
 1. ```git status```
 2. ```git log  Comandos Git.md```
     * ```git log --all --graph --decorate --oneline```
+        * ```alias tree="git log --all --graph --decorate --oneline"```
 3. ```git show Comandos Git.md```
 4. ```git diff f037bd8d1e3a9ec662ff19dd28b79e6ec616d74c 3a12197528d37295480c77038b84aeabc29106e4```
 
@@ -35,6 +36,7 @@ Iniciar un nuevo repositorio, agregar los archivos y generar una entrada en la B
 1. Muestra el estado actual del repositorio.
 2. Muestra el registro de todos los commits aplicados sobre el archivo.
     * Muestra el historial completo de nuestro proyecto de forma comprimida y mas atractica visualmente.
+        * Crea el alias para que el comando no sea tan largo.
 3. Muestra el ultimo cambio que se hizo.
 4. Compara dos commits y muestra los cambios, el **orden** de los commits es importante
 
@@ -168,7 +170,29 @@ Son referencias a versiones del proyecto, no tienen utilidad dentro del proyecto
 4. ```git push origin --tags```
 
 ### Descripción:
+
 1. Muestra los **tags** denntro del proyecto.
 2. Crea un **tag** 
 3. Muestra los hashes a los que hacen referencia los tags.
 4. Envia los tags solamente.
+
+
+## Enviando otras ramas al repositorio:
+
+### Comandos:
+
+1. ```git branch *nombre*```
+2. ```git checkout *nombre*```
+3. ```git show-branch --all```
+4. ```git push origin *nombre*```
+5. ```gitk```
+
+### Descripción:
+
+1. Crea la rama.
+2. Cambia el header a la rama nueva.
+3. Muestra informacion de todas las ramas.
+4. Hace el push de la rama nueva.
+5. Muestra una interface grafica con la informacion de las ramas.
+
+
