@@ -118,6 +118,7 @@ Estos son los comandos que recomienda git al crear un repositorio. Basicamente a
 3. En esta linea se le dice a git que envie a la direccion *origin* la rama *master*. Enviandose todos los commits e informacion de la rama al servidor especificado luego de hacer el login con los credenciales de la plataforma remota.
 
 ## Agregando claves SSH.
+Antes de esto se debe verificar que el nombre de usuario y el correo de la congiguracion global d git sean los mismos que el de la plataforma. Para verlo se usa `git config -l`.
 
 ### Comandos: 
 1. ```ssh-keygen -t rsa -b 4096 -C "minombre@micorreo.com"```
