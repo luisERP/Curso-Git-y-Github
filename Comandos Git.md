@@ -61,12 +61,14 @@ Iniciar un nuevo repositorio, agregar los archivos y generar una entrada en la B
 1. ```git commit -am "Mensage"```
 2. ```git branch *nombredelarama*```
 3. ```git checkout *nombredelarama*```
+4. ```git checkout -b *nombredelarama*```
 
 ### Descripción:
 
 1. Una ves añadidos los archivos al repositorio se le agrega la bandera `-a` para saltarnos el paso de `git add ...`
 2. Crea una rama con el nombre especificado.
 3. Cambia a la rama especificada.
+4. Crea la rama y automaticamente se cambia a esta. Son los dos pasos anteriores en un solo comando.
 
 ## Como hacer un merge de dos ramas:
 
@@ -145,7 +147,7 @@ Antes de esto se debe verificar que el nombre de usuario y el correo de la congi
 [<img src="./assets/new_ssh_key.jpg" width="800"/>](./assets/new_ssh_key.jpg "Añadir clave a github")
 
 
-## Usandp la clave SSH en nuestro repositorio.
+## Usando la clave SSH en nuestro repositorio.
 
 ### Comandos:
 
@@ -196,3 +198,49 @@ Son referencias a versiones del proyecto, no tienen utilidad dentro del proyecto
 5. Muestra una interface grafica con la informacion de las ramas.
 
 
+## Rebase: Ramas ocultas.
+
+Un `rebase` es muy parecido al merge de dos ramas pero funciona de tal forma que parece q los cambios nunca salieron de una sola rama. Reubica los **commits** de la rama secundaria dentro de la historia de la rama principal.
+
+### Contexto:
+
+Teniendo dos ramas, digamos *master* y *secundaria*, hay cambios en *secundaria* ( 1 o varios **commits** ) y master tiene el ultimo **commit**(el mas recientemente hecho) de la historia.
+
+### Observaciones:
+
+* No es muy buena practica.
+* Se debe hacer luego de que la rama *master* sea la mas actualizada( tenga el ultimo commit ).
+* Se realiza **primero** el rebase a la rama *secundaria* y luego a la rama *master*. El orden es muy **importante**, pueden ocurrir errores.
+
+### Comandos:
+1. ```git checkout secundaria```
+2. ```git rebase master```
+3. ```git checkout master```
+4. ```git rebase secundaria```
+5. ```git branch -D secundaria```
+
+### Descripción:
+1. Nos posicionamos en la rama secundaria.
+2. Hacemos el rebase a la secundaria(traemos todo lo de master).
+3. Nos posicionamos en la rama master.
+4. Hacemos el rebase a la master(traemos todo lo de secundaria).
+5. Elimina la rama *secundaria*, luego de esto no queda constancia alguna de la rama y todos sus cambios pertenecen a *master*.
+
+## Stash: Guardando datos temporalmente.
+
+El **Stash** sirve para guardar de forma temporal los cambios realizados en el entorno de trabajo pero **sin hacer commits**, en ves d eso usa una estructura parecida a una lista. Tenemos comandos disponibles como `pop`, `drop` y `list`.
+Luego de hacer el **stash** el entorno vuelve al ultimo **commit** de la rama y los cambios que se habian realizado estan en la memoria, en la lista de **stashs**.
+
+### Comandos:
+1. git stash
+2. git stash list
+3. git stash pop
+    * git stash branch *nombredelarama*
+4. git stash drop
+
+### Descripción:
+1. Crea el **stash**, guardando los cambios y vuelve al ultimo **commit** de la rama. Luego de esto se puede cambiar de **rama**, hacer **checkout** a algun commit, etc.
+2. Muestra la lista d stash existentes.
+3. Aplica los cambios del **stash** y lo elimina de la lista de **stashs**.
+    * Opcionalmente podemos hacer una **nueva rama** con los cambios en **stash**.
+4. Elimina el contenido del **stash**.
