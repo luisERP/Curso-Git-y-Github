@@ -28,8 +28,15 @@ Iniciar un nuevo repositorio, agregar los archivos y generar una entrada en la B
 2. ```git log  Comandos Git.md```
     * ```git log --all --graph --decorate --oneline```
         * ```alias tree="git log --all --graph --decorate --oneline"```
+    * ```git reflog```
 3. ```git show Comandos Git.md```
 4. ```git diff f037bd8d1e3a9ec662ff19dd28b79e6ec616d74c 3a12197528d37295480c77038b84aeabc29106e4```
+5. ```git grep palabra```
+    * ```git grep -n palabra```
+    * ```git grep -c palabra```
+6. ```git log -S "palabra"```
+7. ```git shortlog```
+    * ```git shortlog -sn --all --no-merges```
 
 ### Descripción:
 
@@ -37,8 +44,15 @@ Iniciar un nuevo repositorio, agregar los archivos y generar una entrada en la B
 2. Muestra el registro de todos los commits aplicados sobre el archivo.
     * Muestra el historial completo de nuestro proyecto de forma comprimida y mas atractica visualmente.
         * Crea el alias para que el comando no sea tan largo.
+    * Muestra el historial **completo**, incluso si son reseteados los cambios y no aparecen mediante el comando `git log`
 3. Muestra el ultimo cambio que se hizo.
 4. Compara dos commits y muestra los cambios, el **orden** de los commits es importante
+5. Busca la palabra especificada en los archivos rastreados.
+    * Muestra las lineas y archivos donde estan las palabras.
+    * Muestra la cantidad de veces que se repite esa palabra.
+6. Hace una busqueda de la palabra dentro de los **commits**.
+7. Muestra los commits hechos por cada persona del equipo.
+    * Muestra las estadisticas, eliminando los merges para no tener datos de mas.
 
 ## Moviendonos entre versiones
 
@@ -59,6 +73,7 @@ Iniciar un nuevo repositorio, agregar los archivos y generar una entrada en la B
 ### Comandos:
 
 1. ```git commit -am "Mensage"```
+    * ```git commit --amend```
 2. ```git branch *nombredelarama*```
 3. ```git checkout *nombredelarama*```
 4. ```git checkout -b *nombredelarama*```
@@ -66,6 +81,7 @@ Iniciar un nuevo repositorio, agregar los archivos y generar una entrada en la B
 ### Descripción:
 
 1. Una ves añadidos los archivos al repositorio se le agrega la bandera `-a` para saltarnos el paso de `git add ...`
+    * Una ves hecho el **commit** podemos agregarle los cambios nuevos sin necesidad de hacer un **commit** nuevo, util cuando olvidamos hacer algo que se debió haber hecho.
 2. Crea una rama con el nombre especificado.
 3. Cambia a la rama especificada.
 4. Crea la rama y automaticamente se cambia a esta. Son los dos pasos anteriores en un solo comando.
@@ -244,3 +260,25 @@ Luego de hacer el **stash** el entorno vuelve al ultimo **commit** de la rama y 
 3. Aplica los cambios del **stash** y lo elimina de la lista de **stashs**.
     * Opcionalmente podemos hacer una **nueva rama** con los cambios en **stash**.
 4. Elimina el contenido del **stash**.
+
+## Clean: Limpiando el repositorio
+
+Una vez que git conoce la estructura del repositorio, todos sus archivos y directorios, si se añaden nuevos archivos ya sea por error o mediante la ejecucion de la aplicacion que estamos desarrollando podemos usar el comando `clean` para limpiar esos archivos extra.
+
+### Comandos:
+1. ```git clean --dry-run```
+2. ```git clean -f```
+
+### Descripción:
+1. Muestra los archivos que seran afectados por la limpieza, pero no los borra.
+2. Borra los archivos extra.
+
+## Cherry-pick: Commits de otras ramas al head.
+
+El comando `cherry-pick` trae el **commit** especificado mediante el **hash** al head de la rama actual. Es util para traer cambios especificos que ocurren en otras ramas pero la misma no esta lista para fusionarse todavia, en cambio ese **commit** en especifico si se puede traer.
+
+### Comandos:
+1. ```git cherry-pick dca2a24```
+
+### Descripción:
+1. Trae el **commit** con el **hash** `dca2a24` al head.
