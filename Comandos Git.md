@@ -5,7 +5,8 @@
 2. ```git config --global user.name *minombre*```
 3. ```git config --global user.email *minombre@micorreo.com*```
 4. ```git config --global credential.helper cache```
-5. ```git config --global credential.helper 'cache --timeout=10800'```
+5. ```git config --global credential.helper 'cache --timeout=31536000'```
+6. ```git config --global credential.helper store```
 
 ### Descripción:
 1. Muestra un lista de todas las configuraciones globales de git.
@@ -13,7 +14,7 @@
 3. Configura el la contraseña.
 4. Configura para que las credenciales se almacenen en cache. Se puede usar tambien el administrador de credenciales.
 5. Establece el tiempo(en segundos) que duran las crecdenciales en cache.
-
+6. Configura para que las credenciales sean guardadas en un archivo de texto plano en el directorio *~/.git-credentials*.
 
 # Comandos Básicos de Git.
 
